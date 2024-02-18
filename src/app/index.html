@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html class="w-full h-full scroll-smooth" data-theme="cupcake">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="../style.css" rel="stylesheet" />
+	</head>
+	<body class="w-full h-full">
+		<p class="text-xl"></p>
+		<div class="fill center-col gap-4 p-2 sm:p-8">
+			<div class="w-full">
+				<div class="flex justify-between">
+					<p class="text-2xl">Soru <span id="text-question-curr">?</span></p>
+					<p class="text-xl text-gray-500">/<span id="text-question-total">?</span></p>
+				</div>
+				<progress id="progress-bar" class="progress progress-primary w-full" value="1" max="1"></progress>
+			</div>
+			<div class="w-full rounded-xl center-col justify-start gap-4">
+				<p id="text-q" class="text-xl">const zemi = new kofteburger;</p>
+				<div id="images" class="fill p-4 center flex-wrap gap-8" data-order-manager></div>
+				<div class="footer footer-center p-4 rounded-xl bg-base-300 text-base-content sticky center gap-4 bottom-0">
+					<button id="btn-prev" class="btn">Onceki</button>
+					<button id="btn-next" class="btn btn-primary">Sonraki</button>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="app.js"></script>
+	</body>
+</html>

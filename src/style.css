@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    transition: all .25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.center {
+    @apply flex items-center justify-center;
+}
+
+.fill {
+    @apply w-full h-full;
+}
+
+.center-col {
+    @apply flex flex-col items-center;
+}
+
+img {
+    @apply hover:ring-4 ring-primary transition-all rounded-xl shadow-xl flex-shrink;
+}
+
+.image-container img {
+    width: max(150px, 20vw);
+    max-width: 250px;
+}
+
+.results img {
+    width: 150px;
+}
+
+.image-container {
+    @apply center relative;
+}
+
+.image-order {
+    @apply absolute fill center text-6xl pointer-events-none text-white;
+}
+
+.ordered {
+    @apply bg-primary bg-opacity-30 rounded-lg;
+}
