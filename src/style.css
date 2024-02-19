@@ -29,6 +29,8 @@ img {
 
 .results img {
     width: 150px;
+    height: 150px;
+    @apply object-cover;
 }
 
 .image-container {

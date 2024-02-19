@@ -1,3 +1,8 @@
+/*
+hakan camcioglu
+14-19 Feb 2024
+*/
+
 import $ from 'jquery';
 import { shuffle, is_same } from '../helper.js';
 import { initOrder } from './selectOrder';
@@ -133,8 +138,8 @@ function getSrcs(questionImageCount, orderData) {
 function validate(shuffledQuestion, unshuffledQuestion) {
     const userInput = getSrcs(shuffledQuestion.images.length, shuffledQuestion.orderData);
     const answers = unshuffledQuestion.images;
-    //console.log('ui', userInput);
-    //console.log('a', answers);
+    console.log('ui', userInput);
+    console.log('a', answers);
     if (userInput == undefined) return false;
     if (answers == undefined) return false;
     return is_same(userInput, answers);

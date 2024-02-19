@@ -41,7 +41,10 @@ $('#btn-results').on('click', () => {
     });
 
     $('#btn-results').hide();
-    const resArr = localStorage.getItem('sadece_kendini_kandiriyorsun').split(',');
+    const val = localStorage.getItem('sadece_kendini_kandiriyorsun');
+    if (val == undefined) $('#owo').show();
+    else $('#owo').remove();
+    const resArr = val.split(',');
     var correct = 0;
     var percent = 0;
     resArr.forEach(res => {
@@ -49,8 +52,8 @@ $('#btn-results').on('click', () => {
     });
     percent = (correct / resArr.length) * 100;
 
-    qArr.forEach((e, i) => {
-        const qStats = `<div class="text-xl"><p>Soru ${i + 1}</p><p class="saturate-200 ${resArr[i] === 'true' ? 'text-primary' : 'text-secondary'}">${resArr[i] === 'true' ? 'Dogru' : 'Yanlis'}</p></div>`;
+    qArr().forEach((e, i) => {
+        const qStats = `<div class="text-xl"><p>Soru ${i + 1}: ${e.title}</p><p class="saturate-200 ${resArr[i] === 'true' ? 'text-primary' : 'text-secondary'}">${resArr[i] === 'true' ? 'Dogru' : 'Yanlis'}</p></div>`;
         const html = `<div class="p-4 shadow-2xl rounded-xl bg-base-300 flex gap-4 flex-col">${qStats}<div class="flex flex-wrap justify-center gap-4" data-image-order=${i}></div></div>`;
         $('#images').append(`<div class="w-full flex flex-wrap justify-center gap-4 results">${html}</div>`);
         e.images.map((x) => $(`[data-image-order=${i}]`).append(`<img src="${x}" alt="Quiz Img"/></div>`));

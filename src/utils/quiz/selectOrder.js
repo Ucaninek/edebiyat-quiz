@@ -27,7 +27,8 @@ function syncData(e) {
 }
 
 function handleClick(e, manager, orderItem) {
-    if ($(e).data('ordered')) {
+    if (getOrder(manager).length >= $(manager).children(orderItem).length) return resetOrder(manager);
+    else if ($(e).data('ordered')) {
         const order = getOrder(manager);
         const index = order.indexOf(e);
         if (index > -1) {
@@ -49,7 +50,6 @@ function handleClick(e, manager, orderItem) {
         }
         return;
     }
-    if (getOrder(manager).length >= $(manager).children(orderItem).length) return resetOrder(manager);
     const currIndx = $(manager).data('orderIndx') + 1;
     $(manager).data('orderIndx', currIndx);
     var orders = $(manager).data('orders');

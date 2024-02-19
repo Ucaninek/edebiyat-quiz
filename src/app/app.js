@@ -3,5 +3,5 @@ import { qArr } from "../utils/quiz/questions.js";
 import $ from 'jquery';
 
 $(() => {
-    initQuiz({ questions: qArr });
+    initQuiz({ questions: qArr() });
 });

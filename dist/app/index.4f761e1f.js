@@ -586,7 +586,7 @@ var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
 (0, _jqueryDefault.default)(()=>{
     (0, _quizEngineJs.initQuiz)({
-        questions: (0, _questionsJs.qArr)
+        questions: (0, _questionsJs.qArr)()
     });
 });
 

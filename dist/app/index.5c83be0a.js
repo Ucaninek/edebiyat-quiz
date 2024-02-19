@@ -579,7 +579,10 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"bPJQy":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+/*
+hakan camcioglu
+14-19 Feb 2024
+*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Question", ()=>Question);
 parcelHelpers.export(exports, "initQuiz", ()=>initQuiz);
@@ -699,8 +702,8 @@ function getSrcs(questionImageCount, orderData) {
 function validate(shuffledQuestion, unshuffledQuestion) {
     const userInput = getSrcs(shuffledQuestion.images.length, shuffledQuestion.orderData);
     const answers = unshuffledQuestion.images;
-    //console.log('ui', userInput);
-    //console.log('a', answers);
+    console.log("ui", userInput);
+    console.log("a", answers);
     if (userInput == undefined) return false;
     if (answers == undefined) return false;
     return (0, _helperJs.is_same)(userInput, answers);
@@ -7408,21 +7411,20 @@ function validate(shuffledQuestion, unshuffledQuestion) {
 });
 
 },{}],"3GF3D":[function(require,module,exports) {
-//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "shuffle", ()=>shuffle);
 parcelHelpers.export(exports, "is_same", ()=>is_same);
-function shuffle(arr) {
-    let i = 0, res = [], index;
-    while(i <= arr.length - 1){
-        index = Math.floor(Math.random() * arr.length);
-        if (!res.includes(arr[index])) {
-            res.push(arr[index]);
-            i++;
-        }
+function shuffle(array) {
+    const newArray = array.slice(); // Create a copy of the original array
+    for(let i = newArray.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [
+            newArray[j],
+            newArray[i]
+        ];
     }
-    return res;
+    return newArray;
 }
 var is_same = (array1, array2)=>array1.length == array2.length && array1.every(function(element, index) {
         return element === array2[index];
@@ -7489,7 +7491,8 @@ function syncData(e) {
     }
 }
 function handleClick(e, manager, orderItem) {
-    if ((0, _jqueryDefault.default)(e).data("ordered")) {
+    if (getOrder(manager).length >= (0, _jqueryDefault.default)(manager).children(orderItem).length) return resetOrder(manager);
+    else if ((0, _jqueryDefault.default)(e).data("ordered")) {
         const order = getOrder(manager);
         const index = order.indexOf(e);
         if (index > -1) {
@@ -7510,7 +7513,6 @@ function handleClick(e, manager, orderItem) {
         }
         return;
     }
-    if (getOrder(manager).length >= (0, _jqueryDefault.default)(manager).children(orderItem).length) return resetOrder(manager);
     const currIndx = (0, _jqueryDefault.default)(manager).data("orderIndx") + 1;
     (0, _jqueryDefault.default)(manager).data("orderIndx", currIndx);
     var orders = (0, _jqueryDefault.default)(manager).data("orders");
@@ -11337,22 +11339,230 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "qArr", ()=>qArr);
 var _quizEngineJs = require("./quizEngine.js");
-const hamburgers = [
-    "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/165384.jpg",
-    "https://burgerlad.com/wp-content/uploads/2020/09/McDonalds-Triple-Cheeseburger-3.jpeg",
-    "https://cdn.entertainmentdaily.com/2020/04/02120049/80_Big-Mac-scaled.jpg",
-    "https://www.hungryjacks.com.au/Upload/HJ/Media/Menu/product/Main/1000_Whopper.png"
-];
-const q = new (0, _quizEngineJs.Question)("hamburger cheeseburger bigmac whopper", hamburgers);
-const q1 = new (0, _quizEngineJs.Question)("OWO hamburger cheeseburger bigmac whopper", hamburgers);
-const qArr = [
-    q,
-    q,
-    q,
-    q,
-    q,
-    q
-];
+//const hamburgers = ['https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/165384.jpg', 'https://burgerlad.com/wp-content/uploads/2020/09/McDonalds-Triple-Cheeseburger-3.jpeg', 'https://cdn.entertainmentdaily.com/2020/04/02120049/80_Big-Mac-scaled.jpg', 'https://www.hungryjacks.com.au/Upload/HJ/Media/Menu/product/Main/1000_Whopper.png']
+//const q = new Question('hamburger cheeseburger bigmac whopper', hamburgers);
+var questionArray = [];
+questionArray.push(new (0, _quizEngineJs.Question)("Ag\u0131lda oglak togsa ar\u0131kda ot\u0131 \xf6ner", c([
+    "agil",
+    "oglak",
+    "dogmak",
+    "dere",
+    "ot",
+    "bitmek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Ay tolun bolsa eli\u011Fin imlemes", c([
+    "ay",
+    "dolunay",
+    "el",
+    "g\xf6stermek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Be\u015F er\xf1ek tuz ermes", c([
+    "be\u015F",
+    "parmak",
+    "d\xfcz",
+    "birbiri",
+    "e\u015F",
+    "de\u011Fil"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Bolda\xe7\u0131 buzagu \xf6k\xfcz ara belg\xfcl\xfc\u011F", c([
+    "\xf6k\xfcz",
+    "buza\u011F\u0131",
+    "kendi",
+    "bellietmek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Ermeg\xfc\u011Fe bul\u0131t y\xfck bolur", c([
+    "tembel",
+    "bulut",
+    "y\xfck"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Etli t\u0131r\xf1akl\u0131 eyirmes", c([
+    "et",
+    "t\u0131rnak",
+    "ayr\u0131lmak",
+    "de\u011Fil"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Ey\u011F\xfcl\xfc\u011Fni sub ayak\u0131nda kemi\u015F ba\u015F\u0131nda tile", c([
+    "iyilik",
+    "su",
+    "at",
+    "p\u0131nar",
+    "bulmak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Karga kazga \xf6tg\xfcnse but\u0131 s\u0131nur", c([
+    "karga",
+    "kaz",
+    "\xf6zenmek",
+    "bacak",
+    "k\u0131rmak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Ki\u015Fi alas\u0131 i\xe7tin, y\u0131lk\u0131 alas\u0131 ta\u015Ft\u0131n", c([
+    "kendi",
+    "iyilik",
+    "i\xe7",
+    "at",
+    "iyilik",
+    "d\u0131\u015F"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Kob\u0131 er kuyugka kir\u015Fe yel al\u0131r", c([
+    "\u015Fans",
+    "de\u011Fil",
+    "kendi",
+    "kuyu",
+    "girmek",
+    "r\xfczgar"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("K\xf6zden y\u0131rasa k\xf6\xf1\xfclden yeme y\u0131rar.", c([
+    "g\xf6z",
+    "uzak",
+    "g\xf6n\xfcl",
+    "uzak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Kurtga b\xfcyik bilmes yerim tar ter", c([
+    "ya\u015Fl\u0131-kad\u0131n",
+    "oyun",
+    "bilmek",
+    "de\u011Fil",
+    "dar-alan",
+    "s\xf6ylemek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Kutsuz kuyugka kir\u015Fe kum ya\u011Far", c([
+    "\u015Fans",
+    "de\u011Fil",
+    "kendi",
+    "kuyu",
+    "girmek",
+    "kum",
+    "ya\u011Fmak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("K\xfc\xf1e baksa k\xf6z kamar", c([
+    "g\xfcne\u015F",
+    "bakmak",
+    "g\xf6z",
+    "kama\u015Fmak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Kuz keli\u011Fi yaz\u0131n yay\u0131n bilg\xfcrer belg\xfcl\xfc\u011F", c([
+    "sonbahar",
+    "gelmek",
+    "yaz",
+    "belli"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Nece yitik bi\xe7ek erse \xd6z sap\u0131n yonumas", c([
+    "b\u0131\xe7ak",
+    "keskin",
+    "kendi",
+    "sap",
+    "yontmak",
+    "de\u011Fil"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Ot tese a\u011F\u0131z k\xf6ymes", c([
+    "ate\u015F",
+    "s\xf6ylemek",
+    "a\u011F\u0131z",
+    "yanmak",
+    "de\u011Fil"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Otug oygu\xe7 birle \xf6\xe7\xfcrmes", c([
+    "ate\u015F",
+    "ate\u015F",
+    "s\xf6nd\xfcrmek",
+    "de\u011Fil"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("\xd6k\xfc\u015F sebin\xe7 bolsa kat\u0131g oksunur", c([
+    "\xe7ok",
+    "sevinmek",
+    "\xe7ok",
+    "pi\u015Fman"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Tokum y\xfcz\xfcp kuyrukta bi\xe7ek s\u0131ma", c([
+    "deri",
+    "y\xfczmek",
+    "kuyruk",
+    "b\u0131\xe7ak",
+    "k\u0131rmak",
+    "de\u011Fil"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("T\xfcnle yorub kunduz sebn\xfcr, ki\xe7ikde eplenip ulgayu sebn\xfcr", c([
+    "gece",
+    "yola-\xe7\u0131kmak",
+    "g\xfcnd\xfcz",
+    "sevinmek",
+    "k\xfc\xe7\xfck-\xe7ocuk",
+    "evlenmek",
+    "ya\u015Fl\u0131-kad\u0131n",
+    "sevinmek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Ya\u011F\u0131n\u0131 a\u015Faklasa ba\u015Fka \xe7\u0131kar", c([
+    "d\xfc\u015Fman",
+    "k\xfc\xe7\xfcmsemek",
+    "yenilmek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Yal\xf1uk ogl\u0131 munsuz bolmas", c([
+    "kendi",
+    "o\u011Ful",
+    "dert"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Yal\xf1uk ogl\u0131 yokayur ey\u011F\xfc at\u0131 kal\u0131r", c([
+    "kendi",
+    "o\u011Ful",
+    "yok-olmak",
+    "\xf6lmek",
+    "iyi",
+    "ad\u0131-kalmak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Yaz\u0131daki s\xfcblin eyergeli, ebdeki takagu u\xe7g\u0131nma", c([
+    "d\xfczl\xfck",
+    "s\xfcl\xfcn",
+    "bakmak",
+    "ev",
+    "tavuk",
+    "ka\xe7mak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Yaz\u0131n kat\u0131glansa k\u0131\u015F\u0131n sebn\xfcr.", c([
+    "yaz",
+    "yemek",
+    "k\u0131\u015F",
+    "sevinmek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Y\u0131lan kend\xfc e\u011Frisin bilmes, tebi boyn\u0131n e\u011Fri ter", c([
+    "y\u0131lan",
+    "kendi",
+    "e\u011Fri",
+    "bilmek",
+    "de\u011Fil",
+    "deve",
+    "boyun",
+    "e\u011Fri",
+    "s\xf6ylemek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Yogurkanda artuk ayak k\xf6s\xfclse \xfc\u015Fiy\xfcr", c([
+    "ayak",
+    "yorgan",
+    "\xfc\u015F\xfcmek"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Yurt ki\xe7\xfck bolsa angut bed\xfck ur", c([
+    "delik",
+    "k\xfc\xe7\xfck",
+    "t\u0131pa",
+    "yama",
+    "b\xfcy\xfck",
+    "vurmak"
+])));
+questionArray.push(new (0, _quizEngineJs.Question)("Y\xfczge k\xf6rme erdem tile", c([
+    "kendi",
+    "y\xfcz",
+    "g\xfczel",
+    "de\u011Fil",
+    "fazilet",
+    "bakmak"
+])));
+const qArr = ()=>{
+    return questionArray;
+};
+function c(a) {
+    return a.map((x)=>{
+        return `../assets/${x}.png`;
+    });
+}
 
 },{"./quizEngine.js":"bPJQy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["ccMq2"], null, "parcelRequire045a")
 

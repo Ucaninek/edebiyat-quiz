@@ -2,7 +2,6 @@
   "name": "edebiyat-quiz",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +17,7 @@
   "dependencies": {
     "canvas-confetti": "^1.9.2",
     "jquery": "^3.7.1",
+    "parcel-reporter-static-files-copy": "^1.5.3",
     "sweetalert2": "^11.10.5"
   }
 }
