@@ -1,4 +1,8 @@
 node_modules/
 .parcel-cache/
 dist/
+build/
 static/
+.firebase
+.firebaserc
+.firebase/
