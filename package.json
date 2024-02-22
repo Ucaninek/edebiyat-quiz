@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "canvas-confetti": "^1.9.2",
+    "firebase": "^10.8.0",
     "jquery": "^3.7.1",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "sweetalert2": "^11.10.5"

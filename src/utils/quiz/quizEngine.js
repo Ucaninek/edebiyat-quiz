@@ -5,7 +5,7 @@ hakan camcioglu
 
 import $ from 'jquery';
 import { shuffle, is_same } from '../helper.js';
-import { initOrder } from './selectOrder';
+import { initOrder } from './selectOrder.js';
 import Swal from 'sweetalert2';
 
 const defaultOptions = {
@@ -66,7 +66,7 @@ export function initQuiz(options_ = {}) {
                             else resultArr.push(validate(questionData[i], q));
                         });
                         localStorage.setItem('sadece_kendini_kandiriyorsun', resultArr);
-                        window.location.href = './results/';
+                        window.location.href = './results.html';
                     }
                 })
 

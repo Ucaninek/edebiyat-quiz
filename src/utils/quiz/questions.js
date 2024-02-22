@@ -41,5 +41,5 @@ export const qArr = () => {
 }
 
 function c(a) {
-    return a.map(x => { return `../assets/${x}.png` });
+    return a.map(x => { return `./assets/${x}.png` });
 }

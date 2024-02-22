@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import confetti from 'canvas-confetti';
-import { qArr } from '../utils/quiz/questions.js';
+import { qArr } from '../quiz/questions.js';
 
 var count = 200;
 var defaults = {
